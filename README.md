@@ -55,8 +55,6 @@ scan-linkedin-candidates/
 │   ├── test_platform.py          # Platform compatibility test
 │   ├── activate_env.sh           # Activate venv (Linux/macOS)
 │   └── activate_env.bat          # Activate venv (Windows)
-├── docs/                         # Documentation
-├── docker/                       # Docker files
 ├── requirements/                 # Requirements files
 │   ├── base.txt                  # Base dependencies
 │   ├── dev.txt                   # Development dependencies
