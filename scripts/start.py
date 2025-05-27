@@ -36,9 +36,9 @@ def check_requirements():
         
         system = platform.system()
         if system == "Windows":
-            print("  setup.bat")
+            print("  scripts\\setup.bat")
         else:
-            print("  ./setup.sh")
+            print("  ./scripts/setup.sh")
         return False
 
 def check_chrome_browser():
@@ -122,9 +122,9 @@ def main():
         print("\n📚 Setup instructions:")
         system = platform.system()
         if system == "Windows":
-            print("  Run: setup.bat")
+            print("  Run: scripts\\setup.bat")
         else:
-            print("  Run: ./setup.sh")
+            print("  Run: ./scripts/setup.sh")
         sys.exit(1)
     
     print("\n✅ All checks passed! Starting the API server...")
@@ -139,10 +139,17 @@ def main():
     try:
         import sys
         import os
+        
         # Add src to Python path
-        src_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'src')
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(current_dir)
+        src_path = os.path.join(project_root, 'src')
+        
         if src_path not in sys.path:
             sys.path.insert(0, src_path)
+        
+        print(f"📁 Project root: {project_root}")
+        print(f"📁 Source path: {src_path}")
         
         import uvicorn
         uvicorn.run(

@@ -57,7 +57,7 @@ pip install --upgrade pip
 
 # Install requirements
 echo "📥 Installing Python dependencies..."
-pip install -r requirements.txt
+pip install -r requirements/base.txt
 
 # Install ChromeDriver based on OS
 echo "🌐 Setting up ChromeDriver..."
@@ -86,6 +86,13 @@ fi
 echo ""
 echo "🎉 Setup completed successfully!"
 echo ""
+echo "🔄 To activate virtual environment later, run:"
+if [[ "$OS" == "Windows" || "$OS" == "Cygwin" || "$OS" == "MinGw" ]]; then
+    echo "   scripts\\activate_env.bat"
+else
+    echo "   source scripts/activate_env.sh"
+fi
+echo ""
 echo "Next steps:"
 echo "1. Edit .env file with your LinkedIn credentials:"
 if [[ "$OS" == "Windows" || "$OS" == "Cygwin" || "$OS" == "MinGw" ]]; then
@@ -96,14 +103,16 @@ fi
 echo ""
 echo "2. Start the API:"
 if [[ "$OS" == "Windows" || "$OS" == "Cygwin" || "$OS" == "MinGw" ]]; then
-    echo "   python start.py"
+    echo "   python start_simple.py"
+    echo "   # or python scripts/start.py"
 else
-    echo "   python start.py  # or ./start.py"
+    echo "   python start_simple.py"
+    echo "   # or python scripts/start.py"
 fi
 echo ""
 echo "3. Visit: http://localhost:8000/docs"
 echo ""
-echo "For testing, run: python test_api.py"
+echo "For testing, run: python scripts/test_platform.py"
 echo ""
 echo "📚 Platform-specific notes:"
 echo "   - Windows: Make sure Chrome browser is installed"

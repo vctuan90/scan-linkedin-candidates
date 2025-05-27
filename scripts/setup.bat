@@ -35,7 +35,7 @@ python -m pip install --upgrade pip
 
 REM Install requirements
 echo 📥 Installing Python dependencies...
-pip install -r requirements.txt
+pip install -r requirements/base.txt
 
 REM Setup ChromeDriver
 echo 🌐 ChromeDriver will be downloaded automatically when needed
@@ -52,16 +52,20 @@ if not exist ".env" (
 echo.
 echo 🎉 Setup completed successfully!
 echo.
+echo 🔄 To activate virtual environment later, run:
+echo    scripts\activate_env.bat
+echo.
 echo Next steps:
 echo 1. Edit .env file with your LinkedIn credentials:
 echo    notepad .env
 echo.
 echo 2. Start the API:
-echo    python start.py
+echo    python start_simple.py
+echo    REM or python scripts\start.py
 echo.
 echo 3. Visit: http://localhost:8000/docs
 echo.
-echo For testing, run: python test_api.py
+echo For testing, run: python scripts\test_platform.py
 echo.
 echo 📚 Windows notes:
 echo    - Make sure Google Chrome browser is installed

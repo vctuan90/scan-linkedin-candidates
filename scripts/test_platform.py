@@ -158,9 +158,19 @@ def test_api_startup():
     print("🚀 Testing API Startup...")
     
     try:
+        # Add src to Python path
+        import sys
+        import os
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(current_dir)
+        src_path = os.path.join(project_root, 'src')
+        
+        if src_path not in sys.path:
+            sys.path.insert(0, src_path)
+        
         # Test basic imports
-        from app.main import app
-        from app.core.linkedin_scraper_selenium import LinkedInScraperSelenium
+        from main import app
+        from linkedin_scraper.core.scrapers.selenium_scraper import SeleniumScraper
         print("   ✅ API imports successful")
         return True
     except Exception as e:
@@ -215,19 +225,19 @@ def main():
         print("\n🚀 You can now run:")
         system = platform.system()
         if system == "Windows":
-            print("   setup.bat")
-            print("   start.bat")
+            print("   scripts\\setup.bat")
+            print("   python start_simple.py")
         else:
-            print("   ./setup.sh")
-            print("   python start.py")
+            print("   ./scripts/setup.sh")
+            print("   python start_simple.py")
     else:
         print("⚠️  Some tests failed. Please check the issues above.")
         print("\n📚 Setup instructions:")
         system = platform.system()
         if system == "Windows":
-            print("   Run: setup.bat")
+            print("   Run: scripts\\setup.bat")
         else:
-            print("   Run: ./setup.sh")
+            print("   Run: ./scripts/setup.sh")
 
 if __name__ == "__main__":
     main() 
